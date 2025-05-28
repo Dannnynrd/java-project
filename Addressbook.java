@@ -5,9 +5,11 @@ import java.util.ArrayList;
 public class Addressbook {
     private ArrayList<Contact> list;
     private static Scanner scanner = new Scanner(System.in);
+
     public Addressbook() {
         this.list = new ArrayList<>();
     }
+
     public void addContact() {
         Contact contact = new Contact();
 
@@ -37,19 +39,24 @@ public class Addressbook {
 
         list.add(contact);
     }
+
     public void printContacts() {
         System.out.println("\nPrinting address book...");
         int i = 0;
+        
         for (Contact c : list) {
             System.out.print("\nEntry " + i + ":\n\t" + c.getName().toString() + "\n\t" + c.getAddress().toString());
             i += 1;
         }
+
         System.out.println("\n");
     }
+
     public void deleteContact() {
         System.out.println("\nWhich contact do you want to delete? (-1 to cancel)");
         printContacts();
         int x = scanner.nextInt();
+
         if (x == -1) {
             System.out.println("\nAction cancelled.");
             return;
@@ -61,4 +68,5 @@ public class Addressbook {
             list.remove(x);
         }
     }
+    // TODO: add Addressbook.search(String s)
 }
