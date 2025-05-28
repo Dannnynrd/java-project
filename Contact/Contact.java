@@ -3,18 +3,18 @@ package Contact;
 public class Contact {
     private Name name;
     private Address address;
-    Contact() {
+    public Contact() {
     }
-    String getName() {
+    public String getName() {
         return this.name.toString();
     }
-    String getAddress() {
+    public String getAddress() {
         return this.address.toString();
     }
-    void setName(Name name) {
+    public void setName(Name name) {
         this.name = name;
     }
-    void setAdress(Address address) {
+    public void setAdress(Address address) {
         this.address = address;
     }
     public String toString() {

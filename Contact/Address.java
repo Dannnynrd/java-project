@@ -5,34 +5,34 @@ public class Address {
     private int areaCode;
     private String street;
     private int houseNumber;
-    Address(String city, int areaCode, String street, int houseNumber) {
+    public Address(String city, int areaCode, String street, int houseNumber) {
         this.city = city;
         this. areaCode = areaCode;
         this.street = street;
         this.houseNumber = houseNumber;
     }
-    String getCity() {
+    public String getCity() {
         return this.city;
     }
-    int getAreaCode() {
+    public int getAreaCode() {
         return this.areaCode;
     }
-    String getStreet() {
+    public String getStreet() {
         return this.street;
     }
-    int getHouseNumber() {
+    public int getHouseNumber() {
         return this.houseNumber;
     }
-    void setCity(String city) {
+    public void setCity(String city) {
         this.city = city;
     }
-    void setAreaCode(int areaCode) {
+    public void setAreaCode(int areaCode) {
         this.areaCode = areaCode;
     }
-    void setStreet(String street) {
+    public void setStreet(String street) {
         this.street = street;
     }
-    void setHouseNumber(int houseNumber) {
+    public void setHouseNumber(int houseNumber) {
         this.houseNumber = houseNumber;
     }
     public String toString() {

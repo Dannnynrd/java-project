@@ -3,20 +3,20 @@ package Contact;
 public class Name {
     private String firstName;
     private String lastName;
-    Name(String firstName, String lastName) {
+    public Name(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    String getFirstName() {
+    public String getFirstName() {
         return this.firstName;
     }
-    String getLastName() {
+    public String getLastName() {
         return this.lastName;
     }
-    void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    void setLastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
     public String toString() {
