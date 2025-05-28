@@ -2,13 +2,13 @@ package Contact;
 
 public class Address {
     private String city;
-    private int areaCode;
+    private int postalCode;
     private String street;
     private int houseNumber;
 
-    public Address(String city, int areaCode, String street, int houseNumber) {
+    public Address(String city, int postalCode, String street, int houseNumber) {
         this.city = city;
-        this. areaCode = areaCode;
+        this. postalCode = postalCode;
         this.street = street;
         this.houseNumber = houseNumber;
     }
@@ -16,8 +16,8 @@ public class Address {
     public String getCity() {
         return this.city;
     }
-    public int getAreaCode() {
-        return this.areaCode;
+    public int getPostalCode() {
+        return this.postalCode;
     }
     public String getStreet() {
         return this.street;
@@ -29,8 +29,8 @@ public class Address {
     public void setCity(String city) {
         this.city = city;
     }
-    public void setAreaCode(int areaCode) {
-        this.areaCode = areaCode;
+    public void setPostalCode(int areaCode) {
+        this.postalCode = areaCode;
     }
     public void setStreet(String street) {
         this.street = street;
@@ -40,6 +40,6 @@ public class Address {
     }
     
     public String toString() {
-        return this.areaCode + " " + this.city + ", " + this.street + " " + this.houseNumber;
+        return this.postalCode + " " + this.city + ", " + this.street + " " + this.houseNumber;
     }
 }
