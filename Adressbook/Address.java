@@ -1,10 +1,19 @@
-package Contact;
+package Adressbook;
 
 public class Address {
     private String city;
     private int postalCode;
     private String street;
     private int houseNumber;
+
+    public Address() {
+
+    }
+
+    public Address(String city, String street) {
+        this.city = city;
+        this.street = street;
+    }
 
     public Address(String city, int postalCode, String street, int houseNumber) {
         this.city = city;
@@ -40,6 +49,6 @@ public class Address {
     }
     
     public String toString() {
-        return this.postalCode + " " + this.city + ", " + this.street + " " + this.houseNumber;
+        return this.street + " " + this.houseNumber + ", " + this.postalCode + " " + this.city;
     }
 }

@@ -1,4 +1,4 @@
-import Contact.*;
+package Adressbook;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -12,31 +12,49 @@ public class Addressbook {
 
     public void addContact() {
         Contact contact = new Contact();
+        Address address = new Address();
+        Boolean hNTest = true;
+        Boolean pCTest = true;
+        int houseNumber = 0;
+        int postalCode = 0;
 
         System.out.print("\nEnter the first name: ");
-        String firstName = scanner.next(); //no middle names
-        scanner.nextLine();
+        String firstName = scanner.nextLine();
         System.out.print("Enter the last name: ");
-        String lastName = scanner.next(); //if double name then needs to be hyphonated
-        scanner.nextLine();
+        String lastName = scanner.nextLine();
 
         contact.setName(new Name(firstName, lastName));
 
         System.out.print("Enter the city: ");
-        String city = scanner.next();
+        String city = scanner.nextLine();
+        address.setCity(city);
+
+        System.out.print("Enter postal Code (0 to skip): ");
+        int x = scanner.nextInt();
+        if (x == 0) {
+            pCTest = false;
+            System.out.println("Skipped...\n");;
+        } else {postalCode = x; address.setPostalCode(postalCode);} //number only no additional information
         scanner.nextLine();
-        System.out.print("Enter the areaCode: ");
-        int areaCode = scanner.nextInt();
-        scanner.nextLine();
+
         System.out.print("Enter the street: ");
-        String street = scanner.next();
-        scanner.nextLine();
-        System.out.print("Enter the house number: ");
-        int houseNumber = scanner.nextInt(); //number only no additional information
+        String street = scanner.nextLine();
+        address.setStreet(street);
+
+        System.out.print("Enter house number (0 to skip): ");
+        int y = scanner.nextInt();
+        if (y == 0) {
+            hNTest = false;
+            System.out.println("Skipped...");;
+        } else {houseNumber = y; address.setHouseNumber(houseNumber);} //number only no additional information
         scanner.nextLine();
 
-        contact.setAdress(new Address(city, areaCode, street, houseNumber));
-
+        if (hNTest && pCTest) {
+            contact.setAddress(address);
+        } else if (!hNTest && !pCTest) {
+            contact.setAddress(new Address(city, street));
+        }
+        
         list.add(contact);
     }
 
