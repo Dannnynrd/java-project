@@ -1,20 +1,20 @@
 package Contact;
 
 public class Contact {
-    Name name;
-    Address address;
-    public Contact() {
+    private Name name;
+    private Address address;
+    Contact() {
     }
-    public String getName() {
+    String getName() {
         return this.name.toString();
     }
-    public String getAddress() {
+    String getAddress() {
         return this.address.toString();
     }
-    public void setName(Name name) {
+    void setName(Name name) {
         this.name = name;
     }
-    public void setAdress(Address address) {
+    void setAdress(Address address) {
         this.address = address;
     }
     public String toString() {

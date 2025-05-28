@@ -1,38 +1,38 @@
 package Contact;
 
 public class Address {
-    String city;
-    int areaCode;
-    String street;
-    int houseNumber;
-    public Address(String city, int areaCode, String street, int houseNumber) {
+    private String city;
+    private int areaCode;
+    private String street;
+    private int houseNumber;
+    Address(String city, int areaCode, String street, int houseNumber) {
         this.city = city;
         this. areaCode = areaCode;
         this.street = street;
         this.houseNumber = houseNumber;
     }
-    public String getCity() {
+    String getCity() {
         return this.city;
     }
-    public int getAreaCode() {
+    int getAreaCode() {
         return this.areaCode;
     }
-    public String getStreet() {
+    String getStreet() {
         return this.street;
     }
-    public int getHouseNumber() {
+    int getHouseNumber() {
         return this.houseNumber;
     }
-    public void setCity(String city) {
+    void setCity(String city) {
         this.city = city;
     }
-    public void setAreaCode(int areaCode) {
+    void setAreaCode(int areaCode) {
         this.areaCode = areaCode;
     }
-    public void setStreet(String street) {
+    void setStreet(String street) {
         this.street = street;
     }
-    public void setHouseNumber(int houseNumber) {
+    void setHouseNumber(int houseNumber) {
         this.houseNumber = houseNumber;
     }
     public String toString() {
