@@ -48,11 +48,11 @@ public Contact(String firstName, String lastName, String city, String street, in
     this.address.setHouseNumber(houseNumber);
 }
 
-    public String getName() {
-        return this.name.toString();
+    public Name getName() {
+        return this.name;
     }
-    public String getAddress() {
-        return this.address.toString();
+    public Address getAddress() {
+        return this.address;
     }
 
     public void setName(Name name) {
