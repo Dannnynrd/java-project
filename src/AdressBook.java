@@ -2,7 +2,7 @@ import java.util.ArrayList; // Nötig für die ArrayList
 import java.util.Scanner;   // Nötig für den Scanner
 
 
-public class AdressBook extends Contact {
+public class AdressBook {
     private ArrayList<Contact> contactArrayList;
     private Scanner consoleScanner;
 
@@ -35,21 +35,46 @@ public class AdressBook extends Contact {
 
     }
         public void addContact () {
-        Contact ContactTemp = new Contact();
 
-
-        System.out.println("Enter the first name: ");
         String firstname;
-        consoleScanner.nextLine();
-        firstname = consoleScanner.nextLine();
         String lastname;
-        consoleScanner.nextLine();
+
+
+        // set the firstname to user Input
+        System.out.println("Enter the first name: ");
+        firstname = consoleScanner.nextLine();
+
+        // set the lastname to user Input
+        System.out.println("Enter the last name: ");
         lastname = consoleScanner.nextLine();
 
+        // Create Object Name based on user Input
+        Name nameTemp = new Name(firstname, lastname);
 
+        String city;
+        int zipcode;
+        String street;
+        int houseNumber;
 
+        System.out.println("Enter a city: ");
+        city = consoleScanner.nextLine();
 
+        System.out.println("Enter a zipcode: ");
+        zipcode = consoleScanner.nextInt();
+        consoleScanner.nextLine();
 
+        System.out.println("Enter a street: ");
+        consoleScanner.nextLine();
+        street = consoleScanner.nextLine();
+
+        System.out.println("Enter the number of the house: ");
+        consoleScanner.nextLine();
+        houseNumber = consoleScanner.nextInt();
+
+        Address Adresstemp = new Address(city,zipcode,street,houseNumber);
+        Contact newContact = new Contact(nameTemp,Adresstemp);
         }
+
+
 
     }
