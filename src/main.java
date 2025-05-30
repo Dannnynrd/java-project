@@ -3,6 +3,7 @@ public class main {
         AdressBook test = new AdressBook();
         test.addContact();
         test.printContacts();
+        test.search("Danny");
         test.addContact();
         test.deleteContact();
         test.printContacts();

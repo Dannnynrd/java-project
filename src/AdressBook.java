@@ -1,4 +1,6 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList; // Nötig für die ArrayList
+import java.util.Locale;
 import java.util.Scanner;   // Nötig für den Scanner
 
 
@@ -8,7 +10,7 @@ public class AdressBook {
 
     public AdressBook() {
         this.contactArrayList = new ArrayList<>();
-        this.consoleScanner = new Scanner(System.in); // Scanner initialisieren
+        this.consoleScanner = new Scanner(System.in);
 
     }
 
@@ -37,17 +39,30 @@ public class AdressBook {
     }
         public void addContact () {
 
-            String firstname;
-            String lastname;
+            String firstname = ""; // Platzhalter falls firstname geskippt wird und falls nicht wird firstname überschrieben und für Klasse Name ein Objekt erstellen
+            String lastname = ""; // Same as firstname
+            boolean skip;
 
 
             // set the firstname to user Input
-            System.out.println("Enter the first name: ");
-            firstname = consoleScanner.nextLine();
+            System.out.println("Tip: by Leaving an empty line and pressing enter you skip the following info ");
+            System.out.println("Enter the first name (String): ");
+            String tempInput = consoleScanner.nextLine(); //
+            if (!tempInput.isEmpty()) {
+                firstname = tempInput;
+            } else {
+                System.out.println("First name entry skipped");
+            }
+
 
             // set the lastname to user Input
-            System.out.println("Enter the last name: ");
-            lastname = consoleScanner.nextLine();
+            System.out.println("Enter the last name (String): ");
+            tempInput = consoleScanner.nextLine();
+            if (tempInput.isEmpty()){
+                lastname = tempInput;
+            } else {
+                System.out.println("Last name entry skipped");
+            }
 
             // Create Object Name based on user Input
             Name nameTemp = new Name(firstname, lastname);
@@ -56,6 +71,7 @@ public class AdressBook {
             int zipcode;
             String street;
             int houseNumber;
+
 
             System.out.println("Enter a city: ");
             city = consoleScanner.nextLine();
@@ -80,11 +96,43 @@ public class AdressBook {
 
         }
 
+
+
+
         public void printContacts(){
-            System.out.println(contactArrayList);
+
+        if (contactArrayList.isEmpty()){
+            System.out.println("Keine Kontakte im Adressbuch gefunden.");
+            return;
         }
+
+            for(int i = 0; i < contactArrayList.size();i++){
+                System.out.println("Kontakt " + (i+1) +  ":");
+                System.out.println(contactArrayList.get(i));
+                System.out.println(); // new line for better readability
+            }
+
+        }
+
+
+        //t.search(Danny)
 
         public void search(String s){
+        boolean gefunden = false;
+        String searchItem = s.toLowerCase();
 
+        for (int i = 0; i < contactArrayList.size(); i++){
+            Contact kontakt = contactArrayList.get(i);
+            if (kontakt.toString().toLowerCase().contains(searchItem)) {
+                System.out.println("Treffer bei Kontakt #" + (i + 1) + ":");
+                System.out.println(contactArrayList.get(i).toString());
+                gefunden = true;
+            }
         }
+        if (!gefunden){
+            System.out.println("Kein Kontakt enthält:" +  s);
+        }
+
     }
+    }
+
