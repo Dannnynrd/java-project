@@ -11,8 +11,10 @@ public class Addressbook {
     }
 
     public void addContact() {
-        Contact contact = new Contact();
-        String test;
+        String input;
+        int x;
+
+        String businessName = "";
         String firstName = "";
         String lastName = "";
         String city = "";
@@ -20,48 +22,142 @@ public class Addressbook {
         int houseNumber = 0;
         int postalCode = 0;
 
-        System.out.print("\nEnter the first name (skip to skip): ");
-        test = scanner.nextLine();
-        if (!test.equalsIgnoreCase("skip")) {
-            firstName = test;
-        }
-        System.out.print("Enter the last name (skip to skip): ");
-        test = scanner.nextLine();
-        if (!test.equalsIgnoreCase("skip")) {
-            lastName = test;
-        }
+        System.out.println("What kind of contact do you want to add? 1 Person 2 Business: ");
+        x = scanner.nextInt();
+        scanner.nextLine();
 
-        contact.setName(new Name(firstName, lastName));
+        if (x == 1) {
+            Person contact = new Person();
+            System.out.println("Adding Contact...\nTo skip inputs leave empty for strings or put 0 for integers and press ENTER.");
 
-        System.out.print("Enter the city (skip to skip): ");
-        test = scanner.nextLine();
-        if (!test.equalsIgnoreCase("skip")) {
-            city = test;
-        }
+            System.out.print("\nEnter the first name: ");
+            input = scanner.nextLine();
+            if (!input.isEmpty()) {
+                firstName = input;
+            } else {
+                System.out.println("First name skipped.");
+            }
+
+            System.out.print("\nEnter the last name: ");
+            input = scanner.nextLine();
+            if (!input.isEmpty()) {
+                lastName = input;
+            } else {
+                System.out.println("Last name skipped.");
+            }
         
+            contact.setName(new Name(firstName, lastName));
 
-        System.out.print("Enter postal Code (0 to skip): ");
-        int x = scanner.nextInt();
-        if (x != 0) {
-            postalCode = x;
-        } //number only no additional information
-        scanner.nextLine();
+            System.out.print("\nEnter postal Code: ");
+            x = scanner.nextInt();
+            if (x != 0) {
+                postalCode = x;
+            } else {
+                System.out.println("Postal Code skipped.");
+            }
+            scanner.nextLine();
 
-        System.out.print("Enter the street (skip to skip): ");
-        test = scanner.nextLine();
-        if (!test.equalsIgnoreCase("skip")) {
-            street = test;
+            System.out.print("\nEnter the city: ");
+            input = scanner.nextLine();
+            if (!input.isEmpty()) {
+                city = input;
+            } else {
+                System.out.println("City skipped.");
+            }
+        
+            System.out.print("\nEnter the street: ");
+            input = scanner.nextLine();
+            if (!input.isEmpty()) {
+                street = input;
+            } else {
+                System.out.println("Street skipped.");
+            }
+
+            System.out.print("\nEnter house number: ");
+            x = scanner.nextInt();
+            if (x != 0) {
+                houseNumber = x;
+            } else {
+                System.out.println("House number skipped.");
+            }
+            scanner.nextLine();
+
+            contact.setAddress(new Address(city, postalCode, street, houseNumber));
+
+            list.add(contact);
+        } else if (x == 2) {
+            Business contact = new Business();
+            System.out.println("Adding Contact...\nTo skip inputs leave empty for strings or put 0 for integers and press ENTER.");
+
+            System.out.println("Enter business name: ");
+            input = scanner.nextLine();
+            if (!input.isEmpty()) {
+                businessName = input;
+            } else {
+                System.out.println("Business name skipped.");
+            }
+
+            contact.setBusinessName(businessName);
+
+            System.out.print("\nEnter owner's first name: ");
+            input = scanner.nextLine();
+            if (!input.isEmpty()) {
+                firstName = input;
+            } else {
+                System.out.println("First name skipped.");
+            }
+
+            System.out.print("\nEnter owner's last name: ");
+            input = scanner.nextLine();
+            if (!input.isEmpty()) {
+                lastName = input;
+            } else {
+                System.out.println("Last name skipped.");
+            }
+        
+            contact.setName(new Name(firstName, lastName));
+
+            System.out.print("\nEnter postal Code: ");
+            x = scanner.nextInt();
+            if (x != 0) {
+                postalCode = x;
+            } else {
+                System.out.println("Postal Code skipped.");
+            }
+            scanner.nextLine();
+
+            System.out.print("\nEnter the city: ");
+            input = scanner.nextLine();
+            if (!input.isEmpty()) {
+                city = input;
+            } else {
+                System.out.println("City skipped.");
+            }
+        
+            System.out.print("\nEnter the street: ");
+            input = scanner.nextLine();
+            if (!input.isEmpty()) {
+                street = input;
+            } else {
+                System.out.println("Street skipped.");
+            }
+
+            System.out.print("\nEnter house number: ");
+            x = scanner.nextInt();
+            if (x != 0) {
+                houseNumber = x;
+            } else {
+                System.out.println("House number skipped.");
+            }
+            scanner.nextLine();
+
+            contact.setAddress(new Address(city, postalCode, street, houseNumber));
+
+            list.add(contact);
+        } else {
+            System.out.println("Wrong input. Cancelling action...");
+            return;
         }
-
-        System.out.print("Enter house number (0 to skip): ");
-        int y = scanner.nextInt();
-        if (y != 0) {
-            houseNumber = y;
-        } //number only no additional information
-        scanner.nextLine();
-
-        contact.setAddress(new Address(city, postalCode, street, houseNumber));
-        list.add(contact);
     }
 
     public void printContacts() {
@@ -70,21 +166,30 @@ public class Addressbook {
         
         for (Contact c : list) {
             System.out.println("\nEntry " + i + ":");
-            if (c.getName().getFirstName() != "" && c.getName().getLastName() != "") {
-                System.out.println("\t" + c.getName());
-            } else if (c.getName().getFirstName() != "" && c.getName().getLastName() == "" ) {
-                System.out.println("\t" + c.getName().getFirstName());
-            } else if (c.getName().getFirstName() == "" && c.getName().getLastName() != "" ) {
-                System.out.println("\t" + c.getName().getLastName());
+            String output = "\t";
+            
+            if (c instanceof Business) {
+                if (!((Business)c).getBusinessName().isEmpty()) {
+                    output += c.getName().getFirstName() + "\n\t";}
             }
-        
-            if (c.getAddress().getCity() != "" && c.getAddress().getStreet() != "" && c.getAddress().getPostalCode() != 0 && c.getAddress().getHouseNumber() != 0) {
-                System.out.println("\t" + c.getAddress());
-            } else if (c.getAddress().getCity() != "" && c.getAddress().getStreet() != "" && c.getAddress().getPostalCode() != 0 && c.getAddress().getHouseNumber() == 0) {
-                System.out.println("\t" + c.getAddress().getStreet() + ", " + c.getAddress().getPostalCode() + " " + c.getAddress().getCity());
-            } else if (c.getAddress().getCity() != "" && c.getAddress().getStreet() != "" && c.getAddress().getPostalCode() == 0 && c.getAddress().getHouseNumber() != 0) {
-                System.out.println("\t" + c.getAddress().getStreet() + " " + c.getAddress().getHouseNumber() + ", " + c.getAddress().getCity());
-            }
+            if (!c.getName().getFirstName().isEmpty()) {
+                output += c.getName().getFirstName() + " ";}
+            if (!c.getName().getLastName().isEmpty()) {
+                output += c.getName().getLastName();}
+            if (!c.getName().getFirstName().isEmpty() || !c.getName().getLastName().isEmpty()) {
+                output += "\n\t";}
+            if (!c.getAddress().getStreet().isEmpty()) {
+                output += c.getAddress().getStreet() + " ";}
+            if (c.getAddress().getHouseNumber() != 0) {
+                output += c.getAddress().getHouseNumber();}
+            if (!c.getAddress().getStreet().isEmpty() || c.getAddress().getHouseNumber() != 0) {
+                output += ", ";}
+            if (!c.getAddress().getCity().isEmpty()) {
+                output += c.getAddress().getCity() + " ";}
+            if (c.getAddress().getPostalCode() != 0) {
+                output += c.getAddress().getPostalCode();}
+            
+            System.out.println(output);
             i += 1;
         }
     }
