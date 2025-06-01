@@ -22,13 +22,13 @@ public class Addressbook {
         int houseNumber = 0;
         int postalCode = 0;
 
-        System.out.println("What kind of contact do you want to add? 1 Person 2 Business: ");
+        System.out.println("\nWhat kind of contact do you want to add?\nPlease enter:\n1. For personal conatct.\n2. For business contact.\n");
         x = scanner.nextInt();
         scanner.nextLine();
 
         if (x == 1) {
             Person contact = new Person();
-            System.out.println("Adding Contact...\nTo skip inputs leave empty for strings or put 0 for integers and press ENTER.");
+            System.out.println("\nAdding Contact...\nTo skip inputs leave empty for strings or put 0 for integers and press ENTER.");
 
             System.out.print("\nEnter the first name: ");
             input = scanner.nextLine();
@@ -87,9 +87,9 @@ public class Addressbook {
             list.add(contact);
         } else if (x == 2) {
             Business contact = new Business();
-            System.out.println("Adding Contact...\nTo skip inputs leave empty for strings or put 0 for integers and press ENTER.");
+            System.out.println("\nAdding Contact...\nTo skip inputs leave empty for strings or put 0 for integers and press ENTER.");
 
-            System.out.println("Enter business name: ");
+            System.out.println("\nEnter business name: ");
             input = scanner.nextLine();
             if (!input.isEmpty()) {
                 businessName = input;
@@ -166,30 +166,7 @@ public class Addressbook {
         
         for (Contact c : list) {
             System.out.println("\nEntry " + i + ":");
-            String output = "\t";
-            
-            if (c instanceof Business) {
-                if (!((Business)c).getBusinessName().isEmpty()) {
-                    output += c.getName().getFirstName() + "\n\t";}
-            }
-            if (!c.getName().getFirstName().isEmpty()) {
-                output += c.getName().getFirstName() + " ";}
-            if (!c.getName().getLastName().isEmpty()) {
-                output += c.getName().getLastName();}
-            if (!c.getName().getFirstName().isEmpty() || !c.getName().getLastName().isEmpty()) {
-                output += "\n\t";}
-            if (!c.getAddress().getStreet().isEmpty()) {
-                output += c.getAddress().getStreet() + " ";}
-            if (c.getAddress().getHouseNumber() != 0) {
-                output += c.getAddress().getHouseNumber();}
-            if (!c.getAddress().getStreet().isEmpty() || c.getAddress().getHouseNumber() != 0) {
-                output += ", ";}
-            if (!c.getAddress().getCity().isEmpty()) {
-                output += c.getAddress().getCity() + " ";}
-            if (c.getAddress().getPostalCode() != 0) {
-                output += c.getAddress().getPostalCode();}
-            
-            System.out.println(output);
+            System.out.println(c.toString());
             i += 1;
         }
     }
@@ -210,5 +187,27 @@ public class Addressbook {
             list.remove(x);
         }
     }
-    // TODO: add Addressbook.search(String s)
+
+    public void search(){
+        boolean gefunden = false;
+
+        System.out.println("\nPlease enter search term: ");
+        String s = scanner.nextLine();
+
+        String searchItem = s.toLowerCase();
+
+        System.out.println("\nSearching for '" + s + "'...\n");
+
+        for (int i = 0; i < list.size(); i++){
+            Contact contact = list.get(i);
+            if (contact.toString().toLowerCase().contains(searchItem)) {
+                System.out.println("Hit at contact #" + (i + 1) + ":");
+                System.out.println(list.get(i).toString());
+                gefunden = true;
+            }
+        }
+        if (!gefunden){
+            System.out.println("No hits for search term: '" +  s + "'.");
+        }
+    }
 }
