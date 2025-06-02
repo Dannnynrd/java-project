@@ -5,7 +5,8 @@ public class Main {
         Addressbook addressbook = new Addressbook();
         addressbook.addContact();
         addressbook.printContacts();
-        addressbook.search();
+        addressbook.search("Kiel");
+        addressbook.deleteContact();
     }
 }
 

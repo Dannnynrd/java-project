@@ -23,6 +23,7 @@ public class Addressbook {
         int postalCode = 0;
 
         System.out.println("\nWhat kind of contact do you want to add?\nPlease enter:\n1. For personal conatct.\n2. For business contact.\n");
+        
         x = scanner.nextInt();
         scanner.nextLine();
 
@@ -183,31 +184,27 @@ public class Addressbook {
             System.out.println("\nError: Integer out of range of entries. Action cancelled.");
             return;
         } else {
-            System.out.println("\nRemoved entry " + x + " " + list.get(x).getName() + " " + "from address book.");
+            System.out.println("\nRemoved entry " + x + " " + list.get(x).toString() + " " + "from address book.");
             list.remove(x);
         }
     }
 
-    public void search(){
-        boolean gefunden = false;
-
-        System.out.println("\nPlease enter search term: ");
-        String s = scanner.nextLine();
-
+    public void search(String s){
+        boolean found = false;
         String searchItem = s.toLowerCase();
 
-        System.out.println("\nSearching for '" + s + "'...\n");
+        System.out.println("\nSearching for '" + s + "'...");
 
         for (int i = 0; i < list.size(); i++){
             Contact contact = list.get(i);
             if (contact.toString().toLowerCase().contains(searchItem)) {
-                System.out.println("Hit at contact #" + (i + 1) + ":");
+                System.out.println("\nResult at contact #" + (i + 1) + ":");
                 System.out.println(list.get(i).toString());
-                gefunden = true;
+                found = true;
             }
         }
-        if (!gefunden){
-            System.out.println("No hits for search term: '" +  s + "'.");
+        if (!found){
+            System.out.println("\nNo results for search term: '" +  s + "'.");
         }
     }
 }

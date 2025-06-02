@@ -1,31 +1,67 @@
 package Adressbook;
 
+/**
+ * A simple class for names.
+ */
 public class Name {
+    /**
+     * The first name part of the name, if necessary including a middle name after space.
+     */
     private String firstName;
+    /**
+     * The last name part of the name.
+     */
     private String lastName;
     
-    public Name() {
+    /**
+     * Constructs a new Name without parameters.
+     */
+    Name() {
     }
-
-    public Name(String firstName, String lastName) {
+    /**
+     * Constructs a new Name with first name (+ middle name) and a last name given by the two parameters.
+     * @param firstName First name part of the name, if necessary including a middle name after space.
+     * @param lastName Last name part of the name.
+     */
+    Name(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public String getFirstName() {
+    /**
+     * Gets the first name part of the name.
+     * @return Returns the first name part of the name.
+     */
+    String getFirstName() {
         return this.firstName;
     }
-    public String getLastName() {
+    /**
+     * Gets the last name part of the name.
+     * @return Returns the last name part of the name.
+     */
+    String getLastName() {
         return this.lastName;
     }
 
-    public void setFirstName(String firstName) {
+    /**
+     * Sets the first name part with given String parameter.
+     * @param firstName The first name part of the name to set.
+     */
+    void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    public void setLastName(String lastName) {
+    /**
+     * Sets the last name part with given String parameter.
+     * @param lastName The last name part of the name to set.
+     */
+    void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * Returns a readable display of the class.
+     * @return Returns class' attributes as readable display.
+     */
     public String toString() {
         return this.firstName + " " + this.lastName;
     }

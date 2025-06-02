@@ -3,14 +3,14 @@ package Adressbook;
 public class Business extends Contact {
     private String businessName;
     
-    public Business() {        
+    Business() {        
     }
 
-    public void setBusinessName(String businessName) {
+    void setBusinessName(String businessName) {
         this.businessName = businessName;
     }
 
-    public String getBusinessName() {
+    String getBusinessName() {
         return this.businessName;
     }
 

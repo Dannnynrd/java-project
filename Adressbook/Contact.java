@@ -4,22 +4,22 @@ public abstract class Contact {
     private Name name;
     private Address address;
 
-    public Contact() {
+    Contact() {
     }
 
-    public Name getName() {
+    Name getName() {
         return this.name;
     }
 
-    public Address getAddress() {
+    Address getAddress() {
         return this.address;
     }
 
-    public void setName(Name name) {
+    void setName(Name name) {
         this.name = name;
     }
     
-    public void setAddress(Address address) {
+    void setAddress(Address address) {
         this.address = address;
     }
     
