@@ -1,4 +1,4 @@
-import Adressbook.Addressbook;
+import Addressbook.Addressbook;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,8 +13,6 @@ public class Main {
 
 /*
 TODO:
-- documentation (especially of special cases, e.g. street in one word, no middle names, hyphenated last names, etc)
-- add Addressbook.search(String s)
-- overhaul some of the text prompts, e.g. "enter areaCode"
+- document everything in README.txt
  */
 

@@ -1,18 +1,33 @@
-package Adressbook;
+package Addressbook;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/**
+ * A simple class for address books using the Name, Address, Contact, Person and Business classes from the Addressbook package. 
+ */
 public class Addressbook {
+    /**
+     * The list of contacts for the address book.
+     */
     private ArrayList<Contact> list;
+    /**
+     * A scanner to read inputs from the keyboard.
+     */
     private static Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Construcs a new address book without parameters.
+     */
     public Addressbook() {
         this.list = new ArrayList<>();
     }
 
+    /**
+     * Interactively (with scanner and terminal inputs) adds a new contact (either personal or business) to the list of contacts for the address book. Empty inputs will be skipped (Strings: empty line + ENTER; int: 0 +  ENTER).
+     */
     public void addContact() {
-        String input;
-        int x;
+        String input;// Used to temp save String inputs read by scanner.
+        int x;// Used to temp save int inputs read by scanner.
 
         String businessName = "";
         String firstName = "";
@@ -27,13 +42,13 @@ public class Addressbook {
         x = scanner.nextInt();
         scanner.nextLine();
 
-        if (x == 1) {
+        if (x == 1) {//If input was 1 a new personal contact is interactively contructed.
             Person contact = new Person();
             System.out.println("\nAdding Contact...\nTo skip inputs leave empty for strings or put 0 for integers and press ENTER.");
 
             System.out.print("\nEnter the first name: ");
             input = scanner.nextLine();
-            if (!input.isEmpty()) {
+            if (!input.isEmpty()) {//Checks wether input was skipped.
                 firstName = input;
             } else {
                 System.out.println("First name skipped.");
@@ -41,7 +56,7 @@ public class Addressbook {
 
             System.out.print("\nEnter the last name: ");
             input = scanner.nextLine();
-            if (!input.isEmpty()) {
+            if (!input.isEmpty()) {//Checks wether input was skipped.
                 lastName = input;
             } else {
                 System.out.println("Last name skipped.");
@@ -51,16 +66,16 @@ public class Addressbook {
 
             System.out.print("\nEnter postal Code: ");
             x = scanner.nextInt();
-            if (x != 0) {
+            if (x != 0) {//Checks wether input was skipped.
                 postalCode = x;
             } else {
                 System.out.println("Postal Code skipped.");
             }
-            scanner.nextLine();
+            scanner.nextLine();//Empties leftover inpust.
 
             System.out.print("\nEnter the city: ");
             input = scanner.nextLine();
-            if (!input.isEmpty()) {
+            if (!input.isEmpty()) {//Checks wether input was skipped.
                 city = input;
             } else {
                 System.out.println("City skipped.");
@@ -68,7 +83,7 @@ public class Addressbook {
         
             System.out.print("\nEnter the street: ");
             input = scanner.nextLine();
-            if (!input.isEmpty()) {
+            if (!input.isEmpty()) {//Checks wether input was skipped.
                 street = input;
             } else {
                 System.out.println("Street skipped.");
@@ -76,23 +91,23 @@ public class Addressbook {
 
             System.out.print("\nEnter house number: ");
             x = scanner.nextInt();
-            if (x != 0) {
+            if (x != 0) {//Checks wether input was skipped.
                 houseNumber = x;
             } else {
                 System.out.println("House number skipped.");
             }
-            scanner.nextLine();
+            scanner.nextLine();//Empties leftover input.
 
             contact.setAddress(new Address(city, postalCode, street, houseNumber));
 
             list.add(contact);
-        } else if (x == 2) {
+        } else if (x == 2) {//If input was 2 a new business contact is interactively contructed.
             Business contact = new Business();
             System.out.println("\nAdding Contact...\nTo skip inputs leave empty for strings or put 0 for integers and press ENTER.");
 
             System.out.println("\nEnter business name: ");
             input = scanner.nextLine();
-            if (!input.isEmpty()) {
+            if (!input.isEmpty()) {//Checks wether input was skipped.
                 businessName = input;
             } else {
                 System.out.println("Business name skipped.");
@@ -102,7 +117,7 @@ public class Addressbook {
 
             System.out.print("\nEnter owner's first name: ");
             input = scanner.nextLine();
-            if (!input.isEmpty()) {
+            if (!input.isEmpty()) {//Checks wether input was skipped.
                 firstName = input;
             } else {
                 System.out.println("First name skipped.");
@@ -110,7 +125,7 @@ public class Addressbook {
 
             System.out.print("\nEnter owner's last name: ");
             input = scanner.nextLine();
-            if (!input.isEmpty()) {
+            if (!input.isEmpty()) {//Checks wether input was skipped.
                 lastName = input;
             } else {
                 System.out.println("Last name skipped.");
@@ -118,18 +133,18 @@ public class Addressbook {
         
             contact.setName(new Name(firstName, lastName));
 
-            System.out.print("\nEnter postal Code: ");
+            System.out.print("\nEnter postal Code: ");//Only numerical (interger) postal codes.
             x = scanner.nextInt();
-            if (x != 0) {
+            if (x != 0) {//Checks wether input was skipped.
                 postalCode = x;
             } else {
                 System.out.println("Postal Code skipped.");
             }
-            scanner.nextLine();
+            scanner.nextLine();//Empties leftover input.
 
             System.out.print("\nEnter the city: ");
             input = scanner.nextLine();
-            if (!input.isEmpty()) {
+            if (!input.isEmpty()) {//Checks wether input was skipped.
                 city = input;
             } else {
                 System.out.println("City skipped.");
@@ -137,33 +152,36 @@ public class Addressbook {
         
             System.out.print("\nEnter the street: ");
             input = scanner.nextLine();
-            if (!input.isEmpty()) {
+            if (!input.isEmpty()) {//Checks wether input was skipped.
                 street = input;
             } else {
                 System.out.println("Street skipped.");
             }
 
-            System.out.print("\nEnter house number: ");
+            System.out.print("\nEnter house number: ");//Only numerical (integer) house numbers, no additional information. 
             x = scanner.nextInt();
-            if (x != 0) {
+            if (x != 0) {//Checks wether input was skipped.
                 houseNumber = x;
             } else {
                 System.out.println("House number skipped.");
             }
-            scanner.nextLine();
+            scanner.nextLine();//Empties leftover input.
 
             contact.setAddress(new Address(city, postalCode, street, houseNumber));
 
             list.add(contact);
-        } else {
+        } else { //Output for wrong input (neitehr 1 or 2)
             System.out.println("Wrong input. Cancelling action...");
             return;
         }
     }
 
+    /**
+     * Prints the list of contacts for the address book in a readable display.
+     */
     public void printContacts() {
         System.out.println("\nPrinting address book...");
-        int i = 0;
+        int i = 0;//Counts iterations.
         
         for (Contact c : list) {
             System.out.println("\nEntry " + i + ":");
@@ -172,38 +190,45 @@ public class Addressbook {
         }
     }
 
+    /**
+     * Interactively (with reader and terminal inputs) deletes a contact form the list of contact for the address book. Input -1 to cancel.
+     */
     public void deleteContact() {
-        System.out.println("\nWhich contact do you want to delete? (-1 to cancel)");
+        System.out.println("\nWhich contact do you want to delete? (-1 to cancel)");//-1 to cancel
         printContacts();
         int x = scanner.nextInt();
 
-        if (x == -1) {
+        if (x == -1) {//Checks wether Action is cancelled.
             System.out.println("\nAction cancelled.");
             return;
-        } else if (x >= list.size() || x < -1) {
+        } else if (x >= list.size() || x < -1) {//Checks wether input is in range of address book entries.
             System.out.println("\nError: Integer out of range of entries. Action cancelled.");
             return;
-        } else {
+        } else {//Deletes entry.
             System.out.println("\nRemoved entry " + x + " " + list.get(x).toString() + " " + "from address book.");
             list.remove(x);
         }
     }
 
+    /**
+     * Searches through all contacts in contact list for address boook to test wether parameter s is part of contact.
+     * @param s Search term for contact list of address book.
+     */
     public void search(String s){
-        boolean found = false;
-        String searchItem = s.toLowerCase();
+        boolean found = false;//Test variable
+        String searchItem = s.toLowerCase();//Turns search term into lower case to easily compare with contacts
 
         System.out.println("\nSearching for '" + s + "'...");
 
-        for (int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++){//Iterates over all contacts and prints them in readable display if any attributes contain search term
             Contact contact = list.get(i);
-            if (contact.toString().toLowerCase().contains(searchItem)) {
+            if (contact.toString().toLowerCase().contains(searchItem)) {//Checks wether readable display of contact in lower case contains search term in lower case
                 System.out.println("\nResult at contact #" + (i + 1) + ":");
                 System.out.println(list.get(i).toString());
                 found = true;
             }
         }
-        if (!found){
+        if (!found){//Checks wether any result was found + gives output if false
             System.out.println("\nNo results for search term: '" +  s + "'.");
         }
     }
