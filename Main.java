@@ -9,10 +9,3 @@ public class Main {
         addressbook.deleteContact();
     }
 }
-
-
-/*
-TODO:
-- document everything in README.txt
- */
-
