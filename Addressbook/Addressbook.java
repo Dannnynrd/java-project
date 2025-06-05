@@ -205,7 +205,7 @@ public class Addressbook {
             System.out.println("\nError: Integer out of range of entries. Action cancelled.");
             return;
         } else {//Deletes entry.
-            System.out.println("\nRemoved entry " + x + " " + list.get(x).toString() + " " + "from address book.");
+            System.out.println("\nRemoved entry " + x + ":\n" + list.get(x).toString() + " " + "from address book.");
             list.remove(x);
         }
     }
